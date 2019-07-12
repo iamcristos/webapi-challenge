@@ -27,9 +27,7 @@ const Div = styled.div`
     }
 `;
 const ProjectList = (props)=>{
-    console.log(props)
     const {project} = props;
-    // const {deleteUser} = props
     return (
         <Div>
             <h2>{project.name}</h2>
