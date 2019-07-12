@@ -16,11 +16,15 @@ Go code!
 const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
+const projectRoute = require('./route/project');
 
 const server = express();
 server.use(helmet());
+server.use(express.json())
 server.use(logger('dev'));
+
+server.use('/api/project', projectRoute);
 
 server.listen(PORT, (err,res)=>{
     if(err) {

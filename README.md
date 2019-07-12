@@ -35,6 +35,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Describe a Resource?
 
+- A resource is an object with a type, associated data, relationships to other  resources, and a set of methods that operate on it. These methods could either be a GET,POST,PATCH,PUT and DELETE.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
 - An API can return a succesfull status code of 200 or 201 and send a response back to the client of either the data that was requested or a message stating the success.
