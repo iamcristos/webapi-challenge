@@ -12,3 +12,20 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+const express = require('express');
+const helmet = require('helmet');
+const logger = require('morgan');
+const PORT = process.env.PORT || 5000
+
+const server = express();
+server.use(helmet());
+server.use(logger('dev'));
+
+server.listen(PORT, (err,res)=>{
+    if(err) {
+        console.log(`error server did not start ${err}`);
+    }else {
+        console.log(`server is listening at ${PORT}`)
+    }
+});
