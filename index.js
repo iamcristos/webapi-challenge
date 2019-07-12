@@ -29,6 +29,11 @@ server.use(logger('dev'));
 server.use('/api/project', projectRoute);
 server.use('/api/action', actionRoute);
 
+server.all('*', (req,res)=>{
+    res.status(404).json({
+        message: "How did you get here?? go back joor!!!"
+    })
+})
 server.listen(PORT, (err,res)=>{
     if(err) {
         console.log(`error server did not start ${err}`);
