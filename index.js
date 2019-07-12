@@ -16,12 +16,14 @@ Go code!
 const express = require('express');
 const helmet = require('helmet');
 const logger = require('morgan');
+const cors = require('cors');
 const PORT = process.env.PORT || 5000;
 const projectRoute = require('./route/project');
 const actionRoute = require('./route/action');
 const server = express();
 server.use(helmet());
-server.use(express.json())
+server.use(express.json());
+server.use(cors())
 server.use(logger('dev'));
 
 server.use('/api/project', projectRoute);
