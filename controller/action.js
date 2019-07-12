@@ -20,8 +20,8 @@ function getAnAction(req,res) {
 async function updateAction(req,res) {
     const {id} = req.params;
     const {body} = req;
-    if(!body.description || !body.notes) {
-        return errorHelper(res, 400, "description and notes are required")
+    if(!body.description || !body.project_id) {
+        return errorHelper(res, 400, "description and Project_Id are required")
     }
     try {
         const update = await db.update(id,body)
@@ -33,8 +33,8 @@ async function updateAction(req,res) {
 
 async function addAction(req,res) {
     const {body} = req;
-    if(!body.description || !body.notes) {
-        return errorHelper(res, 400, "description and notes are required")
+    if(!body.description || !body.project_id) {
+        return errorHelper(res, 400, "description and Project_Id are required")
     }
     try {
         const action = await db.insert(body)
