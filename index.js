@@ -18,13 +18,14 @@ const helmet = require('helmet');
 const logger = require('morgan');
 const PORT = process.env.PORT || 5000;
 const projectRoute = require('./route/project');
-
+const actionRoute = require('./route/action');
 const server = express();
 server.use(helmet());
 server.use(express.json())
 server.use(logger('dev'));
 
 server.use('/api/project', projectRoute);
+server.use('/api/action', actionRoute);
 
 server.listen(PORT, (err,res)=>{
     if(err) {
