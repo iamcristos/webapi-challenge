@@ -12,3 +12,32 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+const express = require('express');
+const helmet = require('helmet');
+const logger = require('morgan');
+const cors = require('cors');
+const PORT = process.env.PORT || 5000;
+const projectRoute = require('./route/project');
+const actionRoute = require('./route/action');
+const server = express();
+server.use(helmet());
+server.use(express.json());
+server.use(cors())
+server.use(logger('dev'));
+
+server.use('/api/project', projectRoute);
+server.use('/api/action', actionRoute);
+
+server.all('*', (req,res)=>{
+    res.status(404).json({
+        message: "How did you get here?? go back joor!!!"
+    })
+})
+server.listen(PORT, (err,res)=>{
+    if(err) {
+        console.log(`error server did not start ${err}`);
+    }else {
+        console.log(`server is listening at ${PORT}`)
+    }
+});
